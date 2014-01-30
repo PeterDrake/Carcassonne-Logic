@@ -4,6 +4,7 @@ public class Game {
     private Board board;
     private Scorer scorer;
     private Tile currentTile;
+    private static int NUM_TILES = 72;
     
     public Game() {
         gui = new GUI(this);
