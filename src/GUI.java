@@ -9,8 +9,6 @@ public class GUI {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				JFrame frame = new JFrame();
-				Tile tile = new Tile();
-				frame.add(new GraphicTile(tile, 0));
 				frame.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.setVisible(true);
@@ -18,14 +16,3 @@ public class GUI {
 		});
 	}
 }
-
-//public class GraphicTile extends JFrame {
-//
-//	public GraphicTile(Tile tile, int xCord, int yCord, int orientation) {
-//
-//		JFrame frame = new JFrame();
-//		Image image;
-//		image = tile.getImage();
-//	}
-//
-//}
