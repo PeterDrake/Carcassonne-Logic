@@ -6,6 +6,7 @@ public class Board {
 		switch(type) {
 		case 0: 
 			System.out.println("farmer");
+			
 		case 1:
 			System.out.println("thief");
 		case 3:
