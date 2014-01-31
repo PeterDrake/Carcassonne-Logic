@@ -6,5 +6,6 @@ public class Carcassonne {
 		System.out.println("I find this all HIGHLY illogical.");
 		
 		Tile testTile = new Tile("test");
+		System.out.println(testTile);
 	}
 }
