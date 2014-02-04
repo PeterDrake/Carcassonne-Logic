@@ -32,7 +32,7 @@ public class Tile {
 
 	public Tile(String type) {
 		this.type = "tiles/" + type;
-		image = type + ".jpg";
+		image = "Carcassonne Tiles/" + type + ".jpg";
 		grid = new int[3][3];
 		
 		readTile();

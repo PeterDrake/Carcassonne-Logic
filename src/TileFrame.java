@@ -8,9 +8,9 @@ import javax.swing.*;
  * This frame has a menu to load an image and to specify various
  * transformations, and a component to show the resulting image.
  */
-public class TileFrame extends JFrame {
-	private static final int DEFAULT_WIDTH = 90;
-	private static final int DEFAULT_HEIGHT = 90;
+public class TileFrame extends JComponent {
+	private static final int DEFAULT_WIDTH = 200;
+	private static final int DEFAULT_HEIGHT = 200;
 
 	private BufferedImage image;
 
@@ -33,11 +33,12 @@ public class TileFrame extends JFrame {
 		add(new JComponent() {
 			public void paintComponent(Graphics g) {
 				if (image != null)
-					g.drawImage(image,
-							DEFAULT_WIDTH / 2 - image.getWidth() / 2,
-							DEFAULT_HEIGHT / 2 - image.getHeight() / 2, null);
+					g.drawImage(image, 0, 0, null) ;
+//							DEFAULT_WIDTH / 2 - image.getWidth() / 2,
+//							DEFAULT_HEIGHT / 2 - image.getHeight() / 2, null);
 			}
 		});
+		
 	}
 
 	/**
