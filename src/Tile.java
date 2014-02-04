@@ -11,9 +11,15 @@ public class Tile {
 	// TODO
 	private int rotation;
 	
-	//Two dimensional array of neighbors
+	//Array of neighbors
 	// TODO
-	private Tile[][] neighbors;
+	private Tile[] neighbors;
+	
+	// Compass directions for neighbor locations
+	public static final int NORTH = 0;
+	public static final int EAST = 1;
+	public static final int SOUTH = 2;
+	public static final int WEST = 3;
 	
 	// The plan here is to assign numbers to map elements
 	public static final int GRASS = 0;
@@ -49,6 +55,14 @@ public class Tile {
 		grid = new int[3][3];
 		
 		readTile();
+	}
+	
+	public Tile[] getNeighbors() {
+		return neighbors;
+	}
+	
+	public Tile getNeighbor(int i) {
+		return neighbors[i];
 	}
 	
 	public boolean contains(int zone) {

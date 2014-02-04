@@ -20,7 +20,7 @@ public class TileTest {
 	public void containsTest() {
 		Tile tileTest = new Tile("test");
 		assertTrue(tileTest.contains(0));
-		assertFalse(tileTest.contains(4));
+		assertFalse(tileTest.contains(Tile.CLOISTER));
 	}
 
 }
