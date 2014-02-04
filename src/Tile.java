@@ -15,6 +15,7 @@ public class Tile {
 	public static final int ROAD_END = 2;
 	public static final int CITY = 3;
 	public static final int CLOISTER = 4;
+	public static final int CREST = 5;
 	
 	private int[][] grid;
 	
