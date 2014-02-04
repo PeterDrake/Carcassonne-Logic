@@ -30,13 +30,24 @@ public class Tile {
 	}
 
 	public Tile(String type) {
-		this.type = type;
+		this.type = "tiles/" + type;
 		image = type + ".jpg";
 		grid = new int[3][3];
 		
 		readTile();
 	}
 	
+	public void readToGrid(String text) {
+		text.replaceAll("\n", "");
+		int k = 0;
+		for (int i = 0; i < 3; i++){
+	    	  for (int j = 0; j < 3; j++){
+	    		  grid[i][j] = text.charAt(k) - '0';
+	    		  k++;
+	    	  }
+	      }
+	}
+		
 	private void readTile() {
 		String text = "";
 	    Scanner inputFile = null;
@@ -51,20 +62,20 @@ public class Tile {
 
 	    while (inputFile.hasNext())
 	    {
-	      text += inputFile.nextLine();
-	      // TODO Assign grid values from input file!
+	      text += inputFile.nextLine();	    
 	    }
 
-	    System.out.println(text);
+	    readToGrid(text);
 	    inputFile.close();
 	   
 	}
 	
+	@Override
 	public String toString() {
 		String output = "";
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
-				output += grid[i][j] + " ";
+				output += grid[i][j];
 			}
 			output += "\n";
 		}

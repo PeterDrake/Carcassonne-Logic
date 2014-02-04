@@ -13,7 +13,7 @@ public class TileTest {
 	@Test
 	public void readTileTest() {
 		Tile tileTest = new Tile("test");
-		assertEquals("3 3 3 \n1 1 1 \n0 0 0 ", tileTest);
+		assertEquals("333\n111\n000\n", tileTest.toString());
 	}
 
 }
