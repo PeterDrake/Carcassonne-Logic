@@ -51,6 +51,16 @@ public class Tile {
 		readTile();
 	}
 	
+	public boolean contains(int zone) {
+		for (int i = 0; i < 3; i++){
+	    	  for (int j = 0; j < 3; j++){
+	    		  if (grid[i][j] == zone)
+	    		  return true;
+	    	  }
+	      }
+		return false;
+	}
+	
 	// Takes a string and inputs it into the tile's grid
 	public void readToGrid(String text) {
 		text.replaceAll("\n", "");
