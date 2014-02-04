@@ -9,15 +9,18 @@ import javax.swing.*;
  * transformations, and a component to show the resulting image.
  */
 public class TileFrame extends JFrame {
-	private static final int DEFAULT_WIDTH = 400;
-	private static final int DEFAULT_HEIGHT = 400;
-	private String tileName = "CarcassonneTile.jpg";
-	private int numRotation = 2;
+	private static final int DEFAULT_WIDTH = 90;
+	private static final int DEFAULT_HEIGHT = 90;
+	private String tileName;
+	private int numRotation;
 
 	private BufferedImage image;
 
-	public TileFrame() {
+	public TileFrame(Tile tile, int numRotation) {
 		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+		
+		tileName = tile.getImage();
+		this.numRotation = numRotation;
 
 		Image img = new ImageIcon(tileName).getImage();
 		image = new BufferedImage(img.getWidth(null), img.getHeight(null),
