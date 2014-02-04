@@ -1,21 +1,25 @@
+import java.util.ArrayList;
 
 public class Deck {
 
-	Tile[] tiles;
-	
+	ArrayList<Tile> tiles;
+
 	int size;
-	
+
+	/** a new deck has 72 tiles. */
+	static final int DECK_SIZE = 72;
+
 	public Deck() {
-		tiles = createDeck();
+		tiles = new ArrayList<Tile>();
 	}
 
-	private Tile[] createDeck() {
-	
+	private ArrayList<Tile> createDeck() {
+
 		for (int i = 0; i < 4; i++) {
 			addTile(0);
 			addTile(22);
 		}
-		
+
 		for (int i = 0; i < 2; i++) {
 			addTile(1);
 			addTile(6);
@@ -23,9 +27,9 @@ public class Deck {
 			addTile(10);
 			addTile(12);
 			addTile(13);
-			
+
 		}
-		
+
 		for (int i = 0; i < 3; i++) {
 			addTile(3);
 			addTile(7);
@@ -35,62 +39,50 @@ public class Deck {
 			addTile(17);
 			addTile(18);
 			addTile(19);
-			
+
 		}
-		
+
 		for (int i = 0; i < 5; i++) {
 			addTile(15);
 		}
-		
+
 		for (int i = 0; i < 8; i++) {
 			addTile(20);
 		}
-		
+
 		for (int i = 0; i < 9; i++) {
 			addTile(21);
 		}
-		
-		
+
 		addTile(2);
 		addTile(4);
 		addTile(5);
 		addTile(11);
 		addTile(23);
-		
+
 		return tiles;
-		
-		
+
 	}
-	
+
 	private boolean isEmpty() {
-		return getSize() == 0;
+		return tiles.isEmpty();
 	}
-	
+
 	private int getSize() {
-		return  size;
+		return tiles.size();
 	}
 
 	private Tile removeTile(int i) {
-		size--;
-		return null;
+		return tiles.remove(i);
 	}
-	
-	private Tile removeTile() {
-//		Tile 
-//		size--;
-		return null;
-		
+
+	private Tile removeRandomTile() {
+		int r = (int) (getSize() * Math.random());
+		return tiles.remove(r);
 	}
 
 	private void addTile(int i) {
-		tiles[size++] = new Tile("" + i);
+		tiles.add(new Tile("" + i));
 	}
-	
-	private void shuffleDeck() {
-		
-	}
-	
-	
-	
-}
 
+}
