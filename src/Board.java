@@ -1,4 +1,5 @@
 import java.awt.*;
+
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -11,12 +12,12 @@ public class Board extends JFrame {
 	// clicked
 	public int placeMeeple(int[] location, Player player, int type) {
 		String meepleType;
-		String color = "translucent";
+		Color color = java.awt.Color.WHITE;
 		x = location[0];
 		y = location[1];
 		
 		if (player != null) {
-			color = player.color;
+			color = player.getColor();
 		}
 		switch (type) {
 		case 0:
@@ -42,7 +43,7 @@ public class Board extends JFrame {
 
 		// this should be fixed
 		if (player != null) {
-			player.meeple--;
+			player.meeple;
 		}
 
 		return -1;
