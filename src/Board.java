@@ -31,7 +31,7 @@ public class Board extends JFrame {
 		}
 		// draw meeple using information from specific case and coordinates
 		// taken in
-		meepleImage = new ImageIcon(meepleType).getImage();
+//		meepleImage = new ImageIcon(meepleType).getImage();
 
 		add(new JComponent() {
 			public void paintComponent(Graphics g) {
@@ -42,9 +42,9 @@ public class Board extends JFrame {
 		});
 
 		// this should be fixed
-		if (player != null) {
-			player.meeple;
-		}
+//		if (player != null) {
+//			player.meeple;
+//		}
 
 		return -1;
 	}

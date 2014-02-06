@@ -11,9 +11,15 @@ public class Tile {
 	// TODO
 	private int rotation;
 	
-	//Two dimensional array of neighbors
+	//Array of neighbors
 	// TODO
-	private Tile[][] neighbors;
+	private Tile[] neighbors;
+	
+	// Compass directions for neighbor locations
+	public static final int NORTH = 0;
+	public static final int EAST = 1;
+	public static final int SOUTH = 2;
+	public static final int WEST = 3;
 	
 	// The plan here is to assign numbers to map elements
 	public static final int GRASS = 0;
@@ -30,25 +36,51 @@ public class Tile {
 	private String image;
 	
 	// Integer value assigned to a tile
-	private String type;
+	private String filename;
+	
+	// Integer type of tile
+	private int type;
 	
 	// Returns the path of the tile's image
 	public String getImage() {
 		return image;
 	}
 
-	// Returns the tile's type (which is really just a number)
-	public String getType() {
+	// Returns the tile's filename
+	public String getFilename() {
+		return filename;
+	}
+	
+	public int getType() {
 		return type;
 	}
 
-	// Tile constructor, takes a String (which is really just a number)
-	public Tile(String type) {
-		this.type = "tiles/" + type;
+	// Tile constructor, takes an int type
+	public Tile(int type) {
+		this.type = type;
+		filename = "tiles/" + type;
 		image = "images/" + type + ".jpg";
 		grid = new int[3][3];
 		
 		readTile();
+	}
+	
+	public Tile[] getNeighbors() {
+		return neighbors;
+	}
+	
+	public Tile getNeighbor(int i) {
+		return neighbors[i];
+	}
+	
+	public boolean contains(int zone) {
+		for (int i = 0; i < 3; i++){
+	    	  for (int j = 0; j < 3; j++){
+	    		  if (grid[i][j] == zone)
+	    		  return true;
+	    	  }
+	      }
+		return false;
 	}
 	
 	// Takes a string and inputs it into the tile's grid
@@ -67,7 +99,7 @@ public class Tile {
 	private void readTile() {
 		String text = "";
 	    Scanner inputFile = null;
-		File myFile = new File(type);
+		File myFile = new File(filename);
 		
 	    try {
 			inputFile = new Scanner(myFile);
