@@ -16,7 +16,8 @@ public class GUI
          {
             public void run()
             {
-               JFrame frame = new TileFrame(tile, 1);
+               JFrame frame = new TileFrame(new Tile(0), Tile.NORTH);
+               JFrame frame2 = new TileFrame(new Tile(1), Tile.NORTH);
                frame.setTitle("Carcassonne");
                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                frame.setVisible(true);
