@@ -11,9 +11,9 @@ public class Board {
 	
 	public String getScore() {
 		String score = "";
-		for (int i = 0; i < numPlayers; i++)
-			score += " Player " + i + " " + player[i].getScore() + "";
-//			score += " Player " + i + " " + 0;
+		for (int i = 0; i < numPlayers; i++) {
+			score += " Player " + (i + 1) + ": " + player[i].getScore() + "   ";
+		}
 		return score;
 	}
 
