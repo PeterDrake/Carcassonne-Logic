@@ -49,8 +49,31 @@ public class Board extends JFrame {
 		return -1;
 	}
 	
-	public boolean validTilePlacement(int[] location, Player player, Tile tile) {
+	public boolean legalTilePlacement(Tile tile) {
+		int[][] grid = tile.getGrid();
+		Tile comparison;
+		int[][] comparisonGrid;
 		
+		for(int i = Tile.NORTH; i <= Tile.WEST; i++) {
+			if(tile.getNeighbor(i) != null) {
+				comparison = tile.getNeighbor(i);
+				comparisonGrid = comparison.getGrid();
+				
+				if(!compareRows(grid[i], comparisonGrid[i]))
+					return false;
+			}
+		}
+		return true;
+		
+	}
+	
+	public boolean compareRows(int[] row1, int[] row2) {
+		for(int i = 0; i < 3; i++) {
+			if(row1[i] != row2[i]) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }

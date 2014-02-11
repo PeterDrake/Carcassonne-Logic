@@ -14,7 +14,7 @@ public class Tile {
 	
 	//Array of neighbors
 	// TODO
-	private ArrayList<Tile> neighbors;
+	private Tile[] neighbors;
 	
 	// Compass directions for neighbor locations
 	public static final int NORTH = 0;
@@ -39,6 +39,10 @@ public class Tile {
 	// Integer type of tile
 	private int type;
 	private String filename;
+	
+	public void addNeighbor(int i, Tile tile) {
+		neighbors[i] = tile;
+	}
 	
 	// Returns the path of the tile's image
 	public String getImage() {
@@ -67,10 +71,10 @@ public class Tile {
 	}
 	
 	public Tile getNeighbor(int i) {
-		return neighbors.get(i);
+		return neighbors[i];
 	}
 	
-	public ArrayList<Tile> getNeighbors() {
+	public Tile[] getNeighbors() {
 		return neighbors;
 	}
 
@@ -81,7 +85,7 @@ public class Tile {
 		image = "images/" + type + ".jpg";
 		grid = new int[3][3];
 		
-		readTile();
+		neighbors = new Tile[4];
 	}
 	
 	public boolean contains(int zone) {
