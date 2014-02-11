@@ -11,9 +11,10 @@ public class Deck {
 
 	public Deck() {
 		tiles = new ArrayList<Tile>();
+		createDeck();
 	}
 
-	private ArrayList<Tile> createDeck() {
+	public ArrayList<Tile> createDeck() {
 
 		for (int i = 0; i < 4; i++) {
 			addTile(0);
@@ -64,25 +65,33 @@ public class Deck {
 
 	}
 
-	private boolean isEmpty() {
+	public boolean contains(int i) {
+		for (Tile tile : tiles) {
+			if (tile.getType() == i)
+				return true;
+		}
+		return false;
+	}
+
+	public boolean isEmpty() {
 		return tiles.isEmpty();
 	}
 
-	private int getSize() {
+	public int getSize() {
 		return tiles.size();
 	}
 
-	private Tile removeTile(int i) {
+	public Tile removeTile(int i) {
 		return tiles.remove(i);
 	}
 
-	private Tile removeRandomTile() {
+	public Tile removeRandomTile() {
 		int r = (int) (getSize() * Math.random());
 		return tiles.remove(r);
 	}
 
-	private void addTile(int i) {
-		tiles.add(new Tile("" + i));
+	public void addTile(int i) {
+		tiles.add(new Tile(i));
 	}
 
 }

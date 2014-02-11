@@ -36,21 +36,29 @@ public class Tile {
 	private String image;
 	
 	// Integer value assigned to a tile
-	private String type;
+	
+	// Integer type of tile
+	private int type;
+	private String filename;
 	
 	// Returns the path of the tile's image
 	public String getImage() {
 		return image;
 	}
 
-	// Returns the tile's type (which is really just a number)
-	public String getType() {
+	// Returns the tile's filename
+	public String getFilename() {
+		return filename;
+	}
+	
+	public int getType() {
 		return type;
 	}
 
-	// Tile constructor, takes a String (which is really just a number)
-	public Tile(String type) {
-		this.type = "tiles/" + type;
+	// Tile constructor, takes an int type
+	public Tile(int type) {
+		this.type = type;
+		filename = "tiles/" + type;
 		image = "images/" + type + ".jpg";
 		grid = new int[3][3];
 		
@@ -88,10 +96,10 @@ public class Tile {
 	}
 	
 	// Reads a tile definition file (with file not found check!)
-	private void readTile() {
+	public void readTile() {
 		String text = "";
 	    Scanner inputFile = null;
-		File myFile = new File(type);
+		File myFile = new File(filename);
 		
 	    try {
 			inputFile = new Scanner(myFile);
