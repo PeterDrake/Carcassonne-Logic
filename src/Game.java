@@ -41,7 +41,11 @@ public class Game {
 			System.out.println("Place tile: " + x + ", " + y);
 		} else {
 			if (tileCount == 0) {
-				
+				Tile tile = deck.removeRandomTile();
+				tiles[tiles.length/2][tiles.length/2] = tile;
+				gui.gridComponent.drawTile(tile, 0);
+				tileCount++;
+				gui.repaint();
 			}
 			// we are picking a tile from the pile, we set currentTile
 			System.out.println("Pick up a tile.");
