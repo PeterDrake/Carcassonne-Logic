@@ -26,13 +26,27 @@ public class TileTest {
 	@Test
 	public void rotateTest() {
 		Tile tileTest = new Tile(46);
-		tileTest.rotateCW();
-		tileTest.rotateCW();
-		tileTest.rotateCW();
-		tileTest.rotateCW();
-		tileTest.rotateCW();
+		tileTest.rotateClockwise();
+		tileTest.rotateClockwise();
+		tileTest.rotateClockwise();
+		tileTest.rotateClockwise();
+		tileTest.rotateClockwise();
 		assertEquals(tileTest.getRotation(), 1);
 		assertEquals("013\n013\n013\n", tileTest.toString());
+	}
+	
+	@Test
+	public void counterRotateTest() {
+		Tile tileTest = new Tile(46);
+		assertEquals(tileTest.getRotation(), 0);
+		tileTest.rotateCounterClockwise();
+		assertEquals(tileTest.getRotation(), 1);
+		assertEquals("310\n310\n310\n", tileTest.toString());
+		tileTest.rotateClockwise();
+		tileTest.rotateClockwise();
+		tileTest.rotateClockwise();
+		tileTest.rotateClockwise();
+		assertEquals(tileTest.getRotation(), 1);
 	}
 
 }
