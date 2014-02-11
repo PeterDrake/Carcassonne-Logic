@@ -8,13 +8,13 @@ import javax.swing.*;
  * This frame has a menu to load an image and to specify various
  * transformations, and a component to show the resulting image.
  */
-public class TileFrame extends JFrame {
+public class TileComponent extends JComponent {
 	private static final int DEFAULT_WIDTH = 90;
 	private static final int DEFAULT_HEIGHT = 90;
 
 	private BufferedImage image;
 
-	public TileFrame(Tile tile, int numRotation) {
+	public TileComponent(Tile tile, int numRotation) {
 		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		
 		Image img = new ImageIcon(tile.getImage()).getImage();
@@ -39,6 +39,10 @@ public class TileFrame extends JFrame {
 			}
 		});
 	}
+	
+//	public void paintComponent(Graphics g) {
+//		g.dra
+//	}
 
 	/**
 	 * Apply a filter and repaint.
