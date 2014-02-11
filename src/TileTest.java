@@ -32,6 +32,7 @@ public class TileTest {
 		tileTest.rotateCW();
 		tileTest.rotateCW();
 		assertEquals(tileTest.getRotation(), 1);
+		assertEquals("013\n013\n013\n", tileTest.toString());
 	}
 
 }
