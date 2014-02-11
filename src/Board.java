@@ -48,5 +48,9 @@ public class Board extends JFrame {
 
 		return -1;
 	}
+	
+	public boolean validTilePlacement(int[] location, Player player, Tile tile) {
+		
+	}
 
 }

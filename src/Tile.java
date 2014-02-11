@@ -55,6 +55,14 @@ public class Tile {
 		return type;
 	}
 
+	public int getRotation() {
+		return rotation;
+	}
+
+	public void setRotation(int rotation) {
+		this.rotation = rotation;
+	}
+
 	// Tile constructor, takes an int type
 	public Tile(int type) {
 		this.type = type;
@@ -81,6 +89,17 @@ public class Tile {
 	    	  }
 	      }
 		return false;
+	}
+	
+	public void rotateCW() {
+		rotation = (rotation + 1) % 4; 
+	    int[][] ret = new int[3][3];
+	    for (int r = 0; r < 3; r++) {
+	        for (int c = 0; c < 3; c++) {
+	            ret[c][2-r] = grid[r][c];
+	        }
+	    }
+	    grid = ret;
 	}
 	
 	// Takes a string and inputs it into the tile's grid
