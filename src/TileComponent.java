@@ -1,7 +1,7 @@
-
 import java.awt.*;
 import java.awt.geom.*;
 import java.awt.image.*;
+
 import javax.swing.*;
 
 /**
@@ -15,30 +15,22 @@ public class TileComponent extends JComponent {
 	private BufferedImage image;
 
 	public TileComponent(Tile tile, int numRotation) {
-		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-		
-		Image img = new ImageIcon(tile.getImage()).getImage();
-		image = new BufferedImage(img.getWidth(null), img.getHeight(null),
-				BufferedImage.TYPE_INT_RGB);
-		image.getGraphics().drawImage(img, 0, 0, null);
-
-		if (image == null) return;
-		AffineTransform transform = AffineTransform.getRotateInstance(
-				Math.toRadians(90*numRotation), image.getWidth() / 2,
-				image.getHeight() / 2);
-		AffineTransformOp op = new AffineTransformOp(transform,
-				AffineTransformOp.TYPE_BICUBIC);
-		filter(op);
-		
-		add(new JComponent() {
-			public void paintComponent(Graphics g) {
-				if (image != null)
-					g.drawImage(image, 0, 0, null);
-							//DEFAULT_WIDTH / 2 - image.getWidth() / 2,
-							//DEFAULT_HEIGHT / 2 - image.getHeight() / 2, null);
-			}
-		});
-		repaint();
+//		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+//
+//		Image img = new ImageIcon(tile.getImage()).getImage();
+//		image = new BufferedImage(img.getWidth(null), img.getHeight(null),
+//				BufferedImage.TYPE_INT_RGB);
+//		image.getGraphics().drawImage(img, 0, 0, null);
+//
+//		if (image == null)
+//			return;
+//		AffineTransform transform = AffineTransform.getRotateInstance(
+//				Math.toRadians(90 * numRotation), image.getWidth() / 2,
+//				image.getHeight() / 2);
+//		AffineTransformOp op = new AffineTransformOp(transform,
+//				AffineTransformOp.TYPE_BICUBIC);
+//		filter(op);
+		System.out.println("constructor");
 	}
 
 	/**
@@ -52,6 +44,21 @@ public class TileComponent extends JComponent {
 			return;
 		image = op.filter(image, null);
 		repaint();
+	}
+
+	@Override
+	public void paintComponent(Graphics g) {
+//		if (image == null) {
+//			System.out.println("returned");
+//			return;
+//		}
+
+		System.out.println("painting");
+		g.drawImage(new ImageIcon("images/0.jpg").getImage(), 0, 0, null);
+	}
+
+	public Dimension getPreferredSize() {
+		return new Dimension(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 	}
 
 }

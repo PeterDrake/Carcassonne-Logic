@@ -40,35 +40,6 @@ public class GridComponent extends JComponent {
 		addMouseMotionListener(new MouseMotionHandler());
 	}
 
-	void drawTile(Tile tile, int numRotation) {
-		Image img = new ImageIcon(tile.getImage()).getImage();
-		image = new BufferedImage(img.getWidth(null), img.getHeight(null),
-				BufferedImage.TYPE_INT_RGB);
-		image.getGraphics().drawImage(img, 0, 0, null);
-
-		if (image == null)
-			return;
-		AffineTransform transform = AffineTransform.getRotateInstance(
-				Math.toRadians(90 * numRotation), image.getWidth() / 2,
-				image.getHeight() / 2);
-		AffineTransformOp op = new AffineTransformOp(transform,
-				AffineTransformOp.TYPE_BICUBIC);
-		filter(op);
-
-		add(new JComponent() {
-			public void paintComponent(Graphics g) {
-				if (image != null)
-					// g.drawImage(image,
-					// Tile.SIZE / 2 - image.getWidth() / 2,
-					// Tile.SIZE / 2 - image.getHeight() / 2, null);
-					g.drawImage(image, 0, 0, null);
-				
-			}
-			
-		});
-		repaint();
-	}
-
 	private class MouseHandler extends MouseAdapter {
 		public void mousePressed(MouseEvent event) {
 			Point2D point = event.getPoint();
@@ -88,12 +59,15 @@ public class GridComponent extends JComponent {
 		public void mouseDragged(MouseEvent event) {
 		}
 	}
+	
+	Graphics g;
 
 	public void paintComponent(Graphics g) {
-
+		this.g = g;
 		Graphics2D g2 = (Graphics2D) g;
 		g2.draw(new Line2D.Double(GUI.DEFAULT_HEIGHT, 0, GUI.DEFAULT_HEIGHT,
 				GUI.DEFAULT_HEIGHT));
+		System.out.println("called");
 
 		// int numLines = GUI.DEFAULT_HEIGHT / Game.NUM_TILES;
 
@@ -103,6 +77,11 @@ public class GridComponent extends JComponent {
 		// g2.draw(new Line2D.Double(0, i * numLines, GUI.DEFAULT_HEIGHT, i
 		// * numLines));
 		// }
+	}
+	
+	public void drawTile(Tile t, int rotation) {
+		System.out.println(g);
+		g.drawImage(new ImageIcon("images/0.jpg").getImage(), 0, 0, null);
 	}
 
 	public Dimension getPreferredSize() {

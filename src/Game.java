@@ -1,3 +1,4 @@
+
 import javax.swing.JFrame;
 
 public class Game {
@@ -45,13 +46,10 @@ public class Game {
 			if (tileCount == 0) {
 				Tile tile = deck.removeRandomTile();
 				tiles[tiles.length/2][tiles.length/2] = tile;
-				tileCount++;
-//				gui.gridComponent.drawTile(tile, 0);
-				TileComponent tileComponent = new TileComponent(tile, Tile.NORTH);
-				//tileComponent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	            tileComponent.setVisible(true);
-				gui.add(tileComponent);
-				gui.repaint();
+				tileCount++; 
+//	            gui.add(new TileComponent(tile, 0));
+//				gui.repaint();
+				gui.gridComponent.drawTile(new Tile(0), 0);
 			}
 			// we are picking a tile from the pile, we set currentTile
 			System.out.println("Pick up a tile.");
