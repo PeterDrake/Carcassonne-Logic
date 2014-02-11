@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 // TODO
@@ -13,7 +14,7 @@ public class Tile {
 	
 	//Array of neighbors
 	// TODO
-	private Tile[] neighbors;
+	private ArrayList<Tile> neighbors;
 	
 	// Compass directions for neighbor locations
 	public static final int NORTH = 0;
@@ -34,9 +35,7 @@ public class Tile {
 	
 	// The file path of the image associated with a given tile
 	private String image;
-	
-	// Integer value assigned to a tile
-	
+		
 	// Integer type of tile
 	private int type;
 	private String filename;
@@ -59,8 +58,20 @@ public class Tile {
 		return rotation;
 	}
 
-	public void setRotation(int rotation) {
-		this.rotation = rotation;
+	public int[][] getGrid() {
+		return grid;
+	}
+	
+	public int getGridLocation(int x, int y) {
+		return grid[x][y];
+	}
+	
+	public Tile getNeighbor(int i) {
+		return neighbors.get(i);
+	}
+	
+	public ArrayList<Tile> getNeighbors() {
+		return neighbors;
 	}
 
 	// Tile constructor, takes an int type
@@ -71,14 +82,6 @@ public class Tile {
 		grid = new int[3][3];
 		
 		readTile();
-	}
-	
-	public Tile[] getNeighbors() {
-		return neighbors;
-	}
-	
-	public Tile getNeighbor(int i) {
-		return neighbors[i];
 	}
 	
 	public boolean contains(int zone) {
