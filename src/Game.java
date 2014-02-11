@@ -1,3 +1,5 @@
+import javax.swing.JFrame;
+
 public class Game {
 	private GUI gui;
 	private Scorer scorer;
@@ -45,7 +47,10 @@ public class Game {
 				tiles[tiles.length/2][tiles.length/2] = tile;
 				tileCount++;
 //				gui.gridComponent.drawTile(tile, 0);
-				gui.add(new TileComponent(tile, 0));
+				TileComponent tileComponent = new TileComponent(tile, Tile.NORTH);
+				//tileComponent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	            tileComponent.setVisible(true);
+				gui.add(tileComponent);
 				gui.repaint();
 			}
 			// we are picking a tile from the pile, we set currentTile
