@@ -1,4 +1,5 @@
 import java.awt.*;
+
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -11,12 +12,13 @@ public class Board extends JFrame {
 	// clicked
 	public int placeMeeple(int[] location, Player player, int type) {
 		String meepleType;
-		String color = "translucent";
+		Color color = java.awt.Color.WHITE;
 		x = location[0];
 		y = location[1];
 		
 		if (player != null) {
 			//color = player.color;
+			color = player.getColor();
 		}
 		switch (type) {
 		case 0:
@@ -31,6 +33,7 @@ public class Board extends JFrame {
 		// draw meeple using information from specific case and coordinates
 		// taken in
 		//meepleImage = new ImageIcon(meepleType).getImage();
+//		meepleImage = new ImageIcon(meepleType).getImage();
 
 		add(new JComponent() {
 			public void paintComponent(Graphics g) {
@@ -44,6 +47,9 @@ public class Board extends JFrame {
 		if (player != null) {
 			//player.meeple--;
 		}
+//		if (player != null) {
+//			player.meeple;
+//		}
 
 		return -1;
 	}

@@ -2,18 +2,35 @@ public class Game {
 	private GUI gui;
 	private Scorer scorer;
 	private Tile currentTile;
+	private Board board;
 	public static final int NUM_TILES = 72;
 
-	private Tile[][] board = new Tile[NUM_TILES][NUM_TILES];
+	private Tile[][] tiles = new Tile[NUM_TILES][NUM_TILES];
 
 	private int tileCount;
 
 	// private static final int BOARD_SIZE = Game.NUM_TILES * Tile.SIZE;
 
-	public Game() {
-		gui = new GUI(this);
-
-	}
+    private Deck deck;
+    
+    public Game() {
+    	deck = new Deck();
+    	scorer = new Scorer();
+    	gui = new GUI(this);
+    	board = new Board();
+    	run();
+    }
+    
+    private void run() {
+    	if (deck.isEmpty()) {
+    		this.stop();
+    	}
+    }
+    
+    private void stop() {
+    	// TODO
+    	// will initiate endgame scoring
+    }
 
 	public void mouseClicked(int mouseX, int mouseY) {
 		int x = mouseX * Game.NUM_TILES / GUI.DEFAULT_HEIGHT;
