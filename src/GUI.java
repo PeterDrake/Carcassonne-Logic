@@ -19,9 +19,15 @@ public class GUI
                JFrame frame = new JFrame();
                frame.setSize(900, 600);
                frame.setTitle("Carcassonne");
+               JPanel panel = new JPanel(new BorderLayout());
+               Container contentPane = frame.getContentPane();
+               contentPane.setLayout(new BorderLayout());
                Tile tile = new Tile(0);
-               frame.add(new TileComponent(tile, tile.NORTH));
-               frame.pack();
+               Tile tile2 = new Tile(13);
+               panel.add(new TileComponent(tile, tile.EAST, 0, 0), BorderLayout.CENTER);
+               panel.add(new TileComponent(tile2, tile.WEST, 0, 0), BorderLayout.CENTER);
+               frame.add(panel);
+               //frame.pack();
                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                frame.setVisible(true);
             }
