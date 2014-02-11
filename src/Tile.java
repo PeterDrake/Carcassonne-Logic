@@ -91,12 +91,22 @@ public class Tile {
 		return false;
 	}
 	
-	public void rotateCW() {
+	public void rotateClockwise() {
 		rotation = (rotation + 1) % 4; 
 	    int[][] ret = new int[3][3];
 	    for (int r = 0; r < 3; r++) {
 	        for (int c = 0; c < 3; c++) {
 	            ret[c][2-r] = grid[r][c];
+	        }
+	    }
+	    grid = ret;
+	}
+	public void rotateCounterClockwise() {
+		rotation = (rotation + 1) % 4; 
+	    int[][] ret = new int[3][3];
+	    for (int r = 0; r < 3; r++) {
+	        for (int c = 0; c < 3; c++) {
+	            ret[2-c][r] = grid[r][c];
 	        }
 	    }
 	    grid = ret;
