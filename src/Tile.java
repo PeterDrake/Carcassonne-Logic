@@ -86,6 +86,8 @@ public class Tile {
 		grid = new int[3][3];
 		
 		neighbors = new Tile[4];
+		
+		readTile();
 	}
 	
 	public boolean contains(int zone) {
@@ -108,6 +110,7 @@ public class Tile {
 	    }
 	    grid = ret;
 	}
+	
 	public void rotateCounterClockwise() {
 		rotation = (rotation + 1) % 4; 
 	    int[][] ret = new int[3][3];
