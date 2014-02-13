@@ -6,8 +6,8 @@ public class Deck {
 
 	int size;
 
-	/** a new deck has 72 tiles. */
-	static final int DECK_SIZE = 72;
+	// /** a new deck has 72 tiles. */
+	// static final int DECK_SIZE = 72;
 
 	public Deck() {
 		tiles = new ArrayList<Tile>();
@@ -85,6 +85,11 @@ public class Deck {
 		return tiles.remove(i);
 	}
 
+	/**
+	 * Removes and returns a random tile from the deck
+	 * 
+	 * @return
+	 */
 	public Tile removeRandomTile() {
 		int r = (int) (getSize() * Math.random());
 		return tiles.remove(r);

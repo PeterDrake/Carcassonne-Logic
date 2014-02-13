@@ -29,6 +29,7 @@ public class Tile {
 	public static final int CITY = 3;
 	public static final int CLOISTER = 4;
 	public static final int CREST = 5;
+	public static final int SIZE = 90;
 	
 	// Grid is a two dimensional array that keeps track of the zones present in a given tile
 	private int[][] grid;
@@ -170,5 +171,4 @@ public class Tile {
 		
 		return output;
 	}
-	
 }

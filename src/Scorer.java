@@ -1,14 +1,17 @@
 public class Scorer {
-	public boolean roadComplete(Tile tile) {
-		if (!tile.contains(tile.ROAD) || !tile.contains(tile.ROAD_END)) {
+	public boolean isRoadComplete(Tile tile) {
+		
+		// check if placed tile has a ROAD or ROAD_END
+		if (!tile.contains(Tile.ROAD) || !tile.contains(Tile.ROAD_END)) {
 			return false;
-
-//			for (Tile iteratedTile : tile.getNeighbors()) {
-//				if (tile.isConnected(tile.next)) {
-//
-//				}
-//			}
 		}
+		
+		// if tile has ROAD_END use a depth-first search to find another ROAD_END
+		if (tile.contains(Tile.ROAD_END)) {
+			
+		}
+
+		
 		return false;	
 	}
 }

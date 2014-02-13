@@ -17,6 +17,7 @@ public class Board extends JFrame {
 		y = location[1];
 
 		if (player != null) {
+			//color = player.color;
 			color = player.getColor();
 		}
 		switch (type) {
@@ -31,6 +32,7 @@ public class Board extends JFrame {
 		}
 		// draw meeple using information from specific case and coordinates
 		// taken in
+
 		// meepleImage = new ImageIcon(meepleType).getImage();
 
 		add(new JComponent() {
@@ -42,6 +44,7 @@ public class Board extends JFrame {
 		});
 
 		// this should be fixed
+
 		// if (player != null) {
 		// player.meeple;
 		// }
