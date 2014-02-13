@@ -65,32 +65,17 @@ public class GridComponent extends JComponent {
 	public void paintComponent(Graphics g) {
 		this.g = g;
 		Graphics2D g2 = (Graphics2D) g;
-		g2.draw(new Line2D.Double(GUI.DEFAULT_HEIGHT, 0, GUI.DEFAULT_HEIGHT,
-				GUI.DEFAULT_HEIGHT));
-		System.out.println("called");
+		g2.draw(new Line2D.Double(GUI.DEFAULT_HEIGHT, 0, GUI.DEFAULT_HEIGHT, GUI.DEFAULT_HEIGHT));
 		
 		Tile[][] tiles = game.getTiles();
 		for (int i = 0; i < tiles.length; i++) {
 			for (int j = 0; j < tiles.length; j++) {
 				if (tiles[i][j] != null) {
-					g.drawImage(new ImageIcon(tiles[i][j].getFilename()).getImage(), Tile.SIZE * i, Tile.SIZE * j, null);
+					g.drawImage(new ImageIcon(tiles[i][j].getImage()).getImage(), i * GUI.DEFAULT_HEIGHT / Game.NUM_TILES - (Tile.SIZE / 2), j * GUI.DEFAULT_HEIGHT / Game.NUM_TILES - (Tile.SIZE / 2), null);
+//					g.drawImage(new ImageIcon(tiles[i][j].getImage()).getImage(), 576/2, 576/2, null);
 				}
 			}
 		}
-
-		// int numLines = GUI.DEFAULT_HEIGHT / Game.NUM_TILES;
-
-		// for (int i = 0; i <= Game.NUM_TILES; i++) {
-		// g2.draw(new Line2D.Double(i * numLines, 0, i * numLines,
-		// GUI.DEFAULT_HEIGHT));
-		// g2.draw(new Line2D.Double(0, i * numLines, GUI.DEFAULT_HEIGHT, i
-		// * numLines));
-		// }
-	}
-	
-	public void drawTile(Tile t, int rotation) {
-		System.out.println(g);
-		g.drawImage(new ImageIcon("images/0.jpg").getImage(), 0, 0, null);
 	}
 
 	public Dimension getPreferredSize() {

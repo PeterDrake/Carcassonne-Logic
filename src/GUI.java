@@ -10,8 +10,12 @@ public class GUI extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				GUI frame = new GUI(new Game());
-				frame.setTitle("Carcassonne");
+				Game game = new Game();
+				GUI gui = new GUI(game);
+				gui.setTitle("Carcassonne");
+				gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				gui.setVisible(true);
+				game.setGui(gui);
 			}
 		});
 	}
