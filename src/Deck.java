@@ -107,4 +107,13 @@ public class Deck {
 		tiles.add(new Tile(i));
 	}
 
+	@Override
+	public String toString() {
+		String result = "";
+		for (Tile tile : tiles) {
+			result += tile.toString() + '\n';
+		}
+		return result;
+	}
+
 }
