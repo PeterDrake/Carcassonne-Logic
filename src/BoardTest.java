@@ -9,15 +9,11 @@ public class BoardTest {
 		Board board = new Board();
 		Tile tile = new Tile(46);
 		Tile other = new Tile(46);
-		
-//		System.out.println(other);
-		
 		other.rotateClockwise();
 		other.rotateClockwise();
-		
 		tile.addNeighbor(Tile.NORTH, other);
 		assertTrue(board.legalTilePlacement(tile));
-		
+	
 		other.rotateClockwise();
 		tile.addNeighbor(Tile.NORTH, other);
 		assertFalse(board.legalTilePlacement(tile));
@@ -25,8 +21,8 @@ public class BoardTest {
 		tile = new Tile(0) ;
 		other = new Tile(8) ;
 		tile.addNeighbor(Tile.EAST, other);
-		System.out.println(tile);
-		System.out.println(other);
+//		System.out.println(tile);
+//		System.out.println(other);
 		assertTrue(board.legalTilePlacement(tile)) ;
 	}
 

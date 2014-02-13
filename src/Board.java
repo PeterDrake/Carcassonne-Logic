@@ -59,7 +59,7 @@ public class Board extends JFrame {
 		if (comparison != null) {
 			comparisonGrid = comparison.getGrid();
 			// System.out.println(comparison);
-			if (!compareRows(grid[0], comparisonGrid[2]))
+			if (tile.getGridLocation(0, 1) != comparison.getGridLocation(2, 1))
 				return false;
 		}
 
@@ -69,7 +69,7 @@ public class Board extends JFrame {
 			// System.out.println(comparison);
 			tile.rotateClockwise();
 			comparison.rotateClockwise();
-			if (!compareRows(grid[0], comparisonGrid[2])) {
+			if (tile.getGridLocation(0, 1) != comparison.getGridLocation(2, 1)) {
 				tile.rotateCounterClockwise();
 				return false;
 			} else
@@ -80,7 +80,7 @@ public class Board extends JFrame {
 		if (comparison != null) {
 			comparisonGrid = comparison.getGrid();
 			// System.out.println(comparison);
-			if (!compareRows(grid[2], comparisonGrid[0]))
+			if (tile.getGridLocation(2, 1) != comparison.getGridLocation(0, 1))
 				return false;
 		}
 
@@ -90,7 +90,7 @@ public class Board extends JFrame {
 			// System.out.println(comparison);
 			tile.rotateClockwise();
 			comparison.rotateClockwise();
-			if (!compareRows(grid[2], comparisonGrid[0])) {
+			if (tile.getGridLocation(2, 1) != comparison.getGridLocation(0, 1)) {
 				tile.rotateCounterClockwise();
 				return false;
 			} else
@@ -101,11 +101,9 @@ public class Board extends JFrame {
 
 	}
 
-	public boolean compareRows(int[] row1, int[] row2) {
+	public boolean compareRows(int row1, int row2) {
 		for (int i = 0; i < 3; i++) {
-			// System.out.println("row1[" + i + "]:" + row1[i] + " / row2[" + i
-			// + "]:" + row2[i]);
-			if (row1[i] != row2[i]) {
+			if (row1 != row2) {
 				return false;
 			}
 		}
