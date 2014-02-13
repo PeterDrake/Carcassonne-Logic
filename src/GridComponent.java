@@ -68,6 +68,15 @@ public class GridComponent extends JComponent {
 		g2.draw(new Line2D.Double(GUI.DEFAULT_HEIGHT, 0, GUI.DEFAULT_HEIGHT,
 				GUI.DEFAULT_HEIGHT));
 		System.out.println("called");
+		
+		Tile[][] tiles = game.getTiles();
+		for (int i = 0; i < tiles.length; i++) {
+			for (int j = 0; j < tiles.length; j++) {
+				if (tiles[i][j] != null) {
+					g.drawImage(new ImageIcon(tiles[i][j].getFilename()).getImage(), Tile.SIZE * i, Tile.SIZE * j, null);
+				}
+			}
+		}
 
 		// int numLines = GUI.DEFAULT_HEIGHT / Game.NUM_TILES;
 

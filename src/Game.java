@@ -10,6 +10,10 @@ public class Game {
 
 	private Tile[][] tiles = new Tile[NUM_TILES][NUM_TILES];
 
+	public Tile[][] getTiles() {
+		return tiles;
+	}
+
 	private int tileCount;
 
 	// private static final int BOARD_SIZE = Game.NUM_TILES * Tile.SIZE;
@@ -44,12 +48,14 @@ public class Game {
 			System.out.println("Place tile: " + x + ", " + y);
 		} else {
 			if (tileCount == 0) {
+				
 				Tile tile = deck.removeRandomTile();
 				tiles[tiles.length/2][tiles.length/2] = tile;
 				tileCount++; 
 //	            gui.add(new TileComponent(tile, 0));
 //				gui.repaint();
-				gui.gridComponent.drawTile(new Tile(0), 0);
+//				gui.gridComponent.drawTile(new Tile(0), 0);
+				gui.repaint();
 			}
 			// we are picking a tile from the pile, we set currentTile
 			System.out.println("Pick up a tile.");
