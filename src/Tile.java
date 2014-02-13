@@ -29,6 +29,7 @@ public class Tile {
 	public static final int CITY = 3;
 	public static final int CLOISTER = 4;
 	public static final int CREST = 5;
+	public static final int SIZE = 90;
 	
 	// Grid is a two dimensional array that keeps track of the zones present in a given tile
 	private int[][] grid;
@@ -39,6 +40,12 @@ public class Tile {
 	// Integer type of tile
 	private int type;
 	private String filename;
+	
+	public void removeNeighbors() {
+		for(int i = 0; i < 4; i++) {
+			neighbors[i] = null;
+		}
+	}
 	
 	public void addNeighbor(int i, Tile tile) {
 		neighbors[i] = tile;
@@ -170,5 +177,4 @@ public class Tile {
 		
 		return output;
 	}
-	
 }

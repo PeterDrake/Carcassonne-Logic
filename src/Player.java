@@ -2,7 +2,6 @@ import java.awt.Color;
 
 
 public class Player {
-    private Tile currentTile;
     private Meeple[] meeple;
     private Color color;
     
