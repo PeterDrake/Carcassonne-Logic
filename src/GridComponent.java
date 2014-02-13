@@ -14,6 +14,9 @@ import javax.swing.*;
  */
 public class GridComponent extends JComponent {
 
+	private static final int DEFAULT_WIDTH = 90;
+	private static final int DEFAULT_HEIGHT = 90;
+
 	private BufferedImage image;
 
 	/**
@@ -56,15 +59,14 @@ public class GridComponent extends JComponent {
 		public void mouseDragged(MouseEvent event) {
 		}
 	}
-
+	
 	Graphics g;
 
-	@Override
 	public void paintComponent(Graphics g) {
 		this.g = g;
 		Graphics2D g2 = (Graphics2D) g;
 		g2.draw(new Line2D.Double(GUI.DEFAULT_HEIGHT, 0, GUI.DEFAULT_HEIGHT, GUI.DEFAULT_HEIGHT));
-
+		
 		Tile[][] tiles = game.getTiles();
 		for (int i = 0; i < tiles.length; i++) {
 			for (int j = 0; j < tiles.length; j++) {

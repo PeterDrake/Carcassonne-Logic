@@ -12,10 +12,10 @@ public class GUI extends JFrame {
 			public void run() {
 				Game game = new Game();
 				GUI gui = new GUI(game);
-				game.setGui(gui);
 				gui.setTitle("Carcassonne");
 				gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				gui.setVisible(true);
+				game.setGui(gui);
 			}
 		});
 	}
@@ -23,8 +23,7 @@ public class GUI extends JFrame {
 	public GUI(Game game) {
 		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		gridComponent = new GridComponent(game);
-		add(gridComponent);
+		add(gridComponent);		
 		pack();
 	}
-	
 }

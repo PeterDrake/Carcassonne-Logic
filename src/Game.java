@@ -1,3 +1,4 @@
+
 import javax.swing.JFrame;
 
 public class Game {
@@ -55,7 +56,6 @@ public class Game {
 			int y = col(mouseY);
 			System.out.println(x + " " + y);
 		}
-		gui.repaint();
 	}
 
 	public boolean inside(int mouseX, int mouseY) {
