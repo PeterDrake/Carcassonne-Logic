@@ -53,5 +53,63 @@ public class Board extends JFrame {
 
 		return -1;
 	}
+	
+	public boolean legalTilePlacement(Tile tile) {
+		int[][] grid = tile.getGrid();
+		Tile comparison;
+		int[][] comparisonGrid;
+		
+		//		for(int i = Tile.NORTH; i <= Tile.WEST; i++) {
+		comparison = tile.getNeighbor(Tile.NORTH);
+		if(comparison != null) {
+			comparisonGrid = comparison.getGrid();
+			System.out.println(comparison);
+			if(!compareRows(grid[0], comparisonGrid[2]))
+				return false;
+		}
+
+		comparison = tile.getNeighbor(Tile.EAST);
+		if(comparison != null) {
+			comparisonGrid = comparison.getGrid();
+			System.out.println(comparison);
+			tile.rotateClockwise();
+			comparison.rotateClockwise();
+			if(!compareRows(grid[0], comparisonGrid[2]))
+				return false;
+			tile.rotateCounterClockwise();
+		}
+
+		comparison = tile.getNeighbor(Tile.SOUTH);
+		if(comparison != null) {
+			comparisonGrid = comparison.getGrid();
+			System.out.println(comparison);
+			if(!compareRows(grid[2], comparisonGrid[0]))
+				return false;
+		}
+
+		comparison = tile.getNeighbor(Tile.WEST);
+		if(comparison != null) {
+			comparisonGrid = comparison.getGrid();
+			System.out.println(comparison);
+			tile.rotateClockwise();
+			comparison.rotateClockwise();
+			if(!compareRows(grid[2], comparisonGrid[0]))
+				return false;
+			tile.rotateCounterClockwise();
+		}
+		//		}
+		return true;
+
+	}
+
+	public boolean compareRows(int[] row1, int[] row2) {
+		for(int i = 0; i < 3; i++) {
+			System.out.println("row1[" + i + "]:" + row1[i] + " / row2[" + i + "]:" + row2[i]);
+			if(row1[i] != row2[i]) {
+				return false;
+			}
+		}
+		return true;
+	}
 
 }

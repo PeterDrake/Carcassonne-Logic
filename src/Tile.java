@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 // TODO
@@ -35,12 +36,14 @@ public class Tile {
 	
 	// The file path of the image associated with a given tile
 	private String image;
-	
-	// Integer value assigned to a tile
-	private String filename;
-	
+		
 	// Integer type of tile
 	private int type;
+	private String filename;
+	
+	public void addNeighbor(int i, Tile tile) {
+		neighbors[i] = tile;
+	}
 	
 	// Returns the path of the tile's image
 	public String getImage() {
@@ -56,6 +59,26 @@ public class Tile {
 		return type;
 	}
 
+	public int getRotation() {
+		return rotation;
+	}
+
+	public int[][] getGrid() {
+		return grid;
+	}
+	
+	public int getGridLocation(int x, int y) {
+		return grid[x][y];
+	}
+	
+	public Tile getNeighbor(int i) {
+		return neighbors[i];
+	}
+	
+	public Tile[] getNeighbors() {
+		return neighbors;
+	}
+
 	// Tile constructor, takes an int type
 	public Tile(int type) {
 		this.type = type;
@@ -63,15 +86,9 @@ public class Tile {
 		image = "images/" + type + ".jpg";
 		grid = new int[3][3];
 		
+		neighbors = new Tile[4];
+		
 		readTile();
-	}
-	
-	public Tile[] getNeighbors() {
-		return neighbors;
-	}
-	
-	public Tile getNeighbor(int i) {
-		return neighbors[i];
 	}
 	
 	public boolean contains(int zone) {
@@ -82,6 +99,28 @@ public class Tile {
 	    	  }
 	      }
 		return false;
+	}
+	
+	public void rotateClockwise() {
+		rotation = (rotation + 1) % 4; 
+	    int[][] ret = new int[3][3];
+	    for (int r = 0; r < 3; r++) {
+	        for (int c = 0; c < 3; c++) {
+	            ret[c][2-r] = grid[r][c];
+	        }
+	    }
+	    grid = ret;
+	}
+	
+	public void rotateCounterClockwise() {
+		rotation = (rotation + 1) % 4; 
+	    int[][] ret = new int[3][3];
+	    for (int r = 0; r < 3; r++) {
+	        for (int c = 0; c < 3; c++) {
+	            ret[2-c][r] = grid[r][c];
+	        }
+	    }
+	    grid = ret;
 	}
 	
 	// Takes a string and inputs it into the tile's grid
@@ -97,7 +136,7 @@ public class Tile {
 	}
 	
 	// Reads a tile definition file (with file not found check!)
-	private void readTile() {
+	public void readTile() {
 		String text = "";
 	    Scanner inputFile = null;
 		File myFile = new File(filename);

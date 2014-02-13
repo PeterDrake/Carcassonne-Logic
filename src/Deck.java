@@ -14,7 +14,7 @@ public class Deck {
 		createDeck();
 	}
 
-	private ArrayList<Tile> createDeck() {
+	public ArrayList<Tile> createDeck() {
 
 		for (int i = 0; i < 4; i++) {
 			addTile(0);
@@ -77,11 +77,11 @@ public class Deck {
 		return tiles.isEmpty();
 	}
 
-	private int getSize() {
+	public int getSize() {
 		return tiles.size();
 	}
 
-	private Tile removeTile(int i) {
+	public Tile removeTile(int i) {
 		return tiles.remove(i);
 	}
 
@@ -95,7 +95,7 @@ public class Deck {
 		return tiles.remove(r);
 	}
 
-	private void addTile(int i) {
+	public void addTile(int i) {
 		tiles.add(new Tile(i));
 	}
 

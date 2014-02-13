@@ -12,9 +12,6 @@ public class GUI extends JFrame {
 			public void run() {
 				GUI frame = new GUI(new Game());
 				frame.setTitle("Carcassonne");
-	
-				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				frame.setVisible(true);
 			}
 		});
 	}
@@ -22,9 +19,7 @@ public class GUI extends JFrame {
 	public GUI(Game game) {
 		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		gridComponent = new GridComponent(game);
-		add(gridComponent);
-		//add(new TileComponent(new Tile(0), 0));
-		
+		add(gridComponent);		
 		pack();
 	}
 }
