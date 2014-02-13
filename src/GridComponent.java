@@ -69,17 +69,11 @@ public class GridComponent extends JComponent {
 		for (int i = 0; i < tiles.length; i++) {
 			for (int j = 0; j < tiles.length; j++) {
 				if (tiles[i][j] != null) {
-					System.out.println(tiles[i][j].getFilename());
 					g.drawImage(new ImageIcon(tiles[i][j].getImage()).getImage(), i * GUI.DEFAULT_HEIGHT / Game.NUM_TILES - (Tile.SIZE / 2), j * GUI.DEFAULT_HEIGHT / Game.NUM_TILES - (Tile.SIZE / 2), null);
 //					g.drawImage(new ImageIcon(tiles[i][j].getImage()).getImage(), 576/2, 576/2, null);
 				}
 			}
 		}
-	}
-
-	public void drawTile(Tile t, int rotation) {
-		System.out.println(g);
-		g.drawImage(new ImageIcon("images/0.jpg").getImage(), 0, 0, null);
 	}
 
 	public Dimension getPreferredSize() {
