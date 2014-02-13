@@ -15,7 +15,11 @@ public class Board extends JFrame {
 	
 	public Board() {
 		table = new Tile[MAX_SIZE][MAX_SIZE];
-		table[MIDDLE][MIDDLE] = new Tile(24);
+		//table[MIDDLE][MIDDLE] = new Tile(24);
+	}
+	
+	public int getMaxSize() {
+		return MAX_SIZE;
 	}
 	
 	public Tile getTileAtLocation(Point point) {
