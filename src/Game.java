@@ -10,22 +10,23 @@ public class Game {
 
 	private Tile[][] tiles = new Tile[NUM_TILES][NUM_TILES];
 
-	public Tile[][] getTiles() {
-		return tiles;
-	}
-
 	private int tileCount;
-
-	// private static final int BOARD_SIZE = Game.NUM_TILES * Tile.SIZE;
 
     private Deck deck;
     
     public Game() {
     	deck = new Deck();
     	scorer = new Scorer();
-    	gui = new GUI(this);
     	board = new Board();
     	run();
+    }
+
+	public Tile[][] getTiles() {
+		return tiles;
+	}
+
+    public void setGui(GUI gui) {
+    	this.gui = gui;
     }
     
     private void run() {
@@ -44,22 +45,17 @@ public class Game {
 		int y = mouseY * Game.NUM_TILES / GUI.DEFAULT_HEIGHT;
 
 		if (inside(x, y)) {
-			// place a tile on the board
-			System.out.println("Place tile: " + x + ", " + y);
+			System.out.println("Placing a tile at (" + x + ", " + y + ")");
 		} else {
 			if (tileCount == 0) {
-				
+				System.out.println("Placing first tile");
 				Tile tile = deck.removeRandomTile();
-				tiles[tiles.length/2][tiles.length/2] = tile;
+				System.out.println(tile);
+				tiles[tiles.length / 2][tiles.length / 2] = tile;
 				tileCount++; 
-//	            gui.add(new TileComponent(tile, 0));
-//				gui.repaint();
-//				gui.gridComponent.drawTile(new Tile(0), 0);
-				gui.repaint();
 			}
-			// we are picking a tile from the pile, we set currentTile
-			System.out.println("Pick up a tile.");
 		}
+		gui.repaint();
 	}
 
 	public boolean inside(int x, int y) {

@@ -32,6 +32,7 @@ public class TileComponent extends JComponent {
 	}
 
 	public void paintComponent(Graphics g) {
+//		super.paintComponent(g);
 		if (image == null)
 			return;
 
