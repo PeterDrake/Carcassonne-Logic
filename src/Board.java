@@ -15,9 +15,9 @@ public class Board extends JFrame {
 		Color color = java.awt.Color.WHITE;
 		x = location[0];
 		y = location[1];
-		
+
 		if (player != null) {
-			//color = player.color;
+			// color = player.color;
 			color = player.getColor();
 		}
 		switch (type) {
@@ -32,8 +32,8 @@ public class Board extends JFrame {
 		}
 		// draw meeple using information from specific case and coordinates
 		// taken in
-		//meepleImage = new ImageIcon(meepleType).getImage();
-//		meepleImage = new ImageIcon(meepleType).getImage();
+		// meepleImage = new ImageIcon(meepleType).getImage();
+		// meepleImage = new ImageIcon(meepleType).getImage();
 
 		add(new JComponent() {
 			public void paintComponent(Graphics g) {
@@ -45,67 +45,68 @@ public class Board extends JFrame {
 
 		// this should be fixed
 		if (player != null) {
-			//player.meeple--;
+			// player.meeple--;
 		}
-//		if (player != null) {
-//			player.meeple;
-//		}
+		// if (player != null) {
+		// player.meeple;
+		// }
 
 		return -1;
 	}
-	
+
 	public boolean legalTilePlacement(Tile tile) {
 		int[][] grid = tile.getGrid();
 		Tile comparison;
 		int[][] comparisonGrid;
-		
-		//		for(int i = Tile.NORTH; i <= Tile.WEST; i++) {
+
+		// for(int i = Tile.NORTH; i <= Tile.WEST; i++) {
 		comparison = tile.getNeighbor(Tile.NORTH);
-		if(comparison != null) {
+		if (comparison != null) {
 			comparisonGrid = comparison.getGrid();
 			System.out.println(comparison);
-			if(!compareRows(grid[0], comparisonGrid[2]))
+			if (!compareRows(grid[0], comparisonGrid[2]))
 				return false;
 		}
 
 		comparison = tile.getNeighbor(Tile.EAST);
-		if(comparison != null) {
+		if (comparison != null) {
 			comparisonGrid = comparison.getGrid();
 			System.out.println(comparison);
 			tile.rotateClockwise();
 			comparison.rotateClockwise();
-			if(!compareRows(grid[0], comparisonGrid[2]))
+			if (!compareRows(grid[0], comparisonGrid[2]))
 				return false;
 			tile.rotateCounterClockwise();
 		}
 
 		comparison = tile.getNeighbor(Tile.SOUTH);
-		if(comparison != null) {
+		if (comparison != null) {
 			comparisonGrid = comparison.getGrid();
 			System.out.println(comparison);
-			if(!compareRows(grid[2], comparisonGrid[0]))
+			if (!compareRows(grid[2], comparisonGrid[0]))
 				return false;
 		}
 
 		comparison = tile.getNeighbor(Tile.WEST);
-		if(comparison != null) {
+		if (comparison != null) {
 			comparisonGrid = comparison.getGrid();
 			System.out.println(comparison);
 			tile.rotateClockwise();
 			comparison.rotateClockwise();
-			if(!compareRows(grid[2], comparisonGrid[0]))
+			if (!compareRows(grid[2], comparisonGrid[0]))
 				return false;
 			tile.rotateCounterClockwise();
 		}
-		//		}
+		// }
 		return true;
 
 	}
 
 	public boolean compareRows(int[] row1, int[] row2) {
-		for(int i = 0; i < 3; i++) {
-			System.out.println("row1[" + i + "]:" + row1[i] + " / row2[" + i + "]:" + row2[i]);
-			if(row1[i] != row2[i]) {
+		for (int i = 0; i < 3; i++) {
+			System.out.println("row1[" + i + "]:" + row1[i] + " / row2[" + i
+					+ "]:" + row2[i]);
+			if (row1[i] != row2[i]) {
 				return false;
 			}
 		}

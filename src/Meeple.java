@@ -1,4 +1,3 @@
-
 public class Meeple {
-    private boolean isOnBoard;
+	private boolean isOnBoard;
 }

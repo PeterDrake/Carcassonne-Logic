@@ -21,11 +21,11 @@ public class TileComponent extends JComponent {
 	public TileComponent(Tile tile, int rotation, int x, int y) {
 		width = DEFAULT_WIDTH;
 		height = DEFAULT_HEIGHT;
-		
+
 		img = new ImageIcon(tile.getImage()).getImage();
 		image = new BufferedImage(img.getWidth(null), img.getHeight(null),
 				BufferedImage.TYPE_INT_RGB);
-		
+
 		this.rotation = rotation;
 		this.x = x;
 		this.y = y;

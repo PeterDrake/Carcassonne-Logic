@@ -1,4 +1,3 @@
-
 public class Carcassonne {
 
 	public static void main(String[] args) {

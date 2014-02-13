@@ -1,4 +1,3 @@
-
 import javax.swing.JFrame;
 
 public class Game {
@@ -18,26 +17,26 @@ public class Game {
 
 	// private static final int BOARD_SIZE = Game.NUM_TILES * Tile.SIZE;
 
-    private Deck deck;
-    
-    public Game() {
-    	deck = new Deck();
-    	scorer = new Scorer();
-    	gui = new GUI(this);
-    	board = new Board();
-    	run();
-    }
-    
-    private void run() {
-    	if (deck.isEmpty()) {
-    		this.stop();
-    	}
-    }
-    
-    private void stop() {
-    	// TODO
-    	// will initiate endgame scoring
-    }
+	private Deck deck;
+
+	public Game() {
+		deck = new Deck();
+		scorer = new Scorer();
+		gui = new GUI(this);
+		board = new Board();
+		run();
+	}
+
+	private void run() {
+		if (deck.isEmpty()) {
+			this.stop();
+		}
+	}
+
+	private void stop() {
+		// TODO
+		// will initiate endgame scoring
+	}
 
 	public void mouseClicked(int mouseX, int mouseY) {
 		int x = mouseX * Game.NUM_TILES / GUI.DEFAULT_HEIGHT;
@@ -48,13 +47,13 @@ public class Game {
 			System.out.println("Place tile: " + x + ", " + y);
 		} else {
 			if (tileCount == 0) {
-				
+
 				Tile tile = deck.removeRandomTile();
-				tiles[tiles.length/2][tiles.length/2] = tile;
-				tileCount++; 
-//	            gui.add(new TileComponent(tile, 0));
-//				gui.repaint();
-//				gui.gridComponent.drawTile(new Tile(0), 0);
+				tiles[tiles.length / 2][tiles.length / 2] = tile;
+				tileCount++;
+				// gui.add(new TileComponent(tile, 0));
+				// gui.repaint();
+				// gui.gridComponent.drawTile(new Tile(0), 0);
 				gui.repaint();
 			}
 			// we are picking a tile from the pile, we set currentTile
