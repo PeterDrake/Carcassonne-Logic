@@ -82,7 +82,15 @@ public class Deck {
 	}
 
 	public Tile removeTile(int i) {
-		return tiles.remove(i);
+		Tile t = null;
+		for (Tile tile : tiles) {
+			if (tile.getType() == i) {
+				t = tile;
+				tiles.remove(tile);
+				break;
+			}
+		}
+		return t;
 	}
 
 	public Tile removeRandomTile() {
