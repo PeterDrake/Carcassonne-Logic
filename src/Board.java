@@ -3,14 +3,53 @@ import java.awt.*;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import java.awt.Point;
 
 public class Board extends JFrame {
-	Image meepleImage;
-	int x, y;
-
+	
+	private Point last;
+	private Tile[][] table;
+	
+	private final int MAX_SIZE = 143;
+	private final int MIDDLE = 72;
+	
+	public Board() {
+		table = new Tile[MAX_SIZE][MAX_SIZE];
+		table[MIDDLE][MIDDLE] = new Tile(24);
+	}
+	
+	public Tile getTileAtLocation(Point point) {
+		return table[point.x][point.y];
+	}
+	
+	public void placeTile(Tile tile, Point point) {
+		if(isTileHere(new Point(point.x, point.y + 1)))
+			tile.addNeighbor(0, table[point.x][point.y + 1]);
+		if(isTileHere(new Point(point.x + 1, point.y)))
+			tile.addNeighbor(1, table[point.x + 1][point.y]);
+		if(isTileHere(new Point(point.x, point.y - 1)))
+			tile.addNeighbor(2, table[point.x][point.y - 1]);
+		if(isTileHere(new Point(point.x - 1, point.y)))
+			tile.addNeighbor(3, table[point.x - 1][point.y]);
+		
+		if(legalTilePlacement(tile)) {
+			table[point.x][point.y] = tile;
+		} else {
+			tile.removeNeighbors();
+		}
+	}
+	
+	public boolean isTileHere(Point point) {
+		if(table[point.x][point.y] != null)
+			return true;
+		return false;
+	}
+	
 	// takes in an x & y cordinate from a mouseclick, places meeple where
 	// clicked
 	public int placeMeeple(int[] location, Player player, int type) {
+		Image meepleImage;
+		int x, y;
 		String meepleType;
 		Color color = java.awt.Color.WHITE;
 		x = location[0];
@@ -35,13 +74,13 @@ public class Board extends JFrame {
 
 		// meepleImage = new ImageIcon(meepleType).getImage();
 
-		add(new JComponent() {
-			public void paintComponent(Graphics g) {
-				if (meepleImage != null) {
-					g.drawImage(meepleImage, x, y, null);
-				}
-			}
-		});
+//		add(new JComponent() {
+//			public void paintComponent(Graphics g) {
+//				if (meepleImage != null) {
+//					g.drawImage(meepleImage, x, y, null);
+//				}
+//			}
+//		});
 
 		// this should be fixed
 
@@ -53,55 +92,35 @@ public class Board extends JFrame {
 	}
 
 	public boolean legalTilePlacement(Tile tile) {
-		int[][] grid = tile.getGrid();
 		Tile comparison;
-		int[][] comparisonGrid;
 
-		// for(int i = Tile.NORTH; i <= Tile.WEST; i++) {
+		//north
 		comparison = tile.getNeighbor(Tile.NORTH);
-		if (comparison != null) {
-			comparisonGrid = comparison.getGrid();
-			// System.out.println(comparison);
-			if (tile.getGridLocation(0, 1) != comparison.getGridLocation(2, 1))
+		if (comparison != null)
+			if(!(tile.getGridLocation(0, 1) == comparison.getGridLocation(2, 1)))
 				return false;
-		}
 
+		//east
 		comparison = tile.getNeighbor(Tile.EAST);
 		if (comparison != null) {
-			comparisonGrid = comparison.getGrid();
-			// System.out.println(comparison);
-			tile.rotateClockwise();
-			comparison.rotateClockwise();
-			if (tile.getGridLocation(0, 1) != comparison.getGridLocation(2, 1)) {
-				tile.rotateCounterClockwise();
+			if(!(tile.getGridLocation(1, 2) == comparison.getGridLocation(1, 0)))
 				return false;
-			} else
-				tile.rotateCounterClockwise();
 		}
 
+		//south
 		comparison = tile.getNeighbor(Tile.SOUTH);
-		if (comparison != null) {
-			comparisonGrid = comparison.getGrid();
-			// System.out.println(comparison);
-			if (tile.getGridLocation(2, 1) != comparison.getGridLocation(0, 1))
+		if (comparison != null)
+			if(!(tile.getGridLocation(2, 1) == comparison.getGridLocation(0, 1)))
 				return false;
-		}
 
+		//west
 		comparison = tile.getNeighbor(Tile.WEST);
-		if (comparison != null) {
-			comparisonGrid = comparison.getGrid();
-			// System.out.println(comparison);
-			tile.rotateClockwise();
-			comparison.rotateClockwise();
-			if (tile.getGridLocation(2, 1) != comparison.getGridLocation(0, 1)) {
-				tile.rotateCounterClockwise();
+		if (comparison != null)
+			if(!(tile.getGridLocation(1, 0) == comparison.getGridLocation(1, 2)))
 				return false;
-			} else
-				tile.rotateCounterClockwise();
-		}
-		// }
-		return true;
 
+		return true;
+		
 	}
 
 	public boolean compareRows(int row1, int row2) {

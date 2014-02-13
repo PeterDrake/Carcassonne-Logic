@@ -41,6 +41,12 @@ public class Tile {
 	private int type;
 	private String filename;
 	
+	public void removeNeighbors() {
+		for(int i = 0; i < 4; i++) {
+			neighbors[i] = null;
+		}
+	}
+	
 	public void addNeighbor(int i, Tile tile) {
 		neighbors[i] = tile;
 	}

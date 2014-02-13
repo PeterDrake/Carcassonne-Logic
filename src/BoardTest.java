@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.awt.Point;
+
 import org.junit.Test;
 
 public class BoardTest {
@@ -17,13 +19,24 @@ public class BoardTest {
 		other.rotateClockwise();
 		tile.addNeighbor(Tile.NORTH, other);
 		assertFalse(board.legalTilePlacement(tile));
-		
-		tile = new Tile(0) ;
-		other = new Tile(8) ;
-		tile.addNeighbor(Tile.EAST, other);
-//		System.out.println(tile);
-//		System.out.println(other);
-		assertTrue(board.legalTilePlacement(tile)) ;
 	}
-
+	
+	@Test
+	public void legalTilePlacementTest2() {
+		Board board = new Board();
+		Tile tile = new Tile(0) ;
+		Tile other = new Tile(8) ;
+		tile.addNeighbor(Tile.EAST, other);
+		assertFalse(board.legalTilePlacement(tile));
+	}
+	
+	@Test
+	public void placeTileTest() {
+		Board board = new Board();
+		Tile test = new Tile(17);
+		Point point = new Point(71, 72);
+		board.placeTile(test, new Point(71, 72));
+		assertTrue(board.isTileHere(point));
+		assertEquals(test, board.getTileAtLocation(point));
+	}
 }
