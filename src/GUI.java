@@ -23,7 +23,7 @@ public class GUI extends JFrame {
 	public GUI(Game game) {
 		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		gridComponent = new GridComponent(game);
-		add(gridComponent);		
+		add(gridComponent);
 		pack();
 	}
 	

@@ -1,17 +1,15 @@
 import java.awt.Color;
 
-
 public class Player {
-    private Meeple[] meeple;
-    private Color color;
-    
-    public void Player() {
-    	this.color = Color.BLACK;
-    }
+	private Meeple[] meeple;
+	private Color color;
 
-	public Color getColor()
-	{
+	public void Player() {
+		this.color = Color.BLACK;
+	}
+
+	public Color getColor() {
 		return color;
 	}
-    
+
 }
