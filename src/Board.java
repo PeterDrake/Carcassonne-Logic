@@ -10,8 +10,12 @@ public class Board extends JFrame {
 	private Point last;
 	private Tile[][] table;
 	
-	private final int MAX_SIZE = 143;
-	private final int MIDDLE = 72;
+	public static final int MAX_SIZE = 143;
+	public static final int MIDDLE = 72;
+	
+	public Tile[][] getTable() {
+		return table;
+	}
 	
 	public Board() {
 		table = new Tile[MAX_SIZE][MAX_SIZE];
@@ -25,6 +29,7 @@ public class Board extends JFrame {
 	public Tile getTileAtLocation(Point point) {
 		return table[point.x][point.y];
 	}
+
 	
 	public void placeTile(Tile tile, Point point) {
 		if(isTileHere(new Point(point.x, point.y + 1)))
